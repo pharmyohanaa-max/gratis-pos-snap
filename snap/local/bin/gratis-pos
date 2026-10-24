@@ -1,0 +1,17 @@
+#!/bin/sh
+set -e
+
+export JAVA_HOME="$SNAP/usr/lib/jvm/java-17-openjdk-amd64"
+export PATH="$JAVA_HOME/bin:$PATH"
+export LD_LIBRARY_PATH="$SNAP/usr/lib/x86_64-linux-gnu:$JAVA_HOME/lib:$LD_LIBRARY_PATH"
+export XDG_DATA_DIRS="$SNAP/usr/share:${XDG_DATA_DIRS:-/usr/share}"
+export FONTCONFIG_PATH="$SNAP/etc/fonts"
+
+# Persists across snap updates, so the shop's data survives every new version
+mkdir -p "$SNAP_USER_COMMON"
+
+exec java \
+  -Duser.home="$SNAP_USER_COMMON" \
+  -Dawt.useSystemAAFontSettings=on \
+  -Dswing.aatext=true \
+  -jar "$SNAP/jar/gratispos.jar" "$@"

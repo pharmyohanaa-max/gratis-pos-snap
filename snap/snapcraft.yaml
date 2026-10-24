@@ -1,0 +1,74 @@
+name: gratis-pos
+title: Gratis POS
+base: core22
+version: '18.10.26'
+summary: Free to try, lightweight point of sale and shop management for Linux
+description: |
+  Gratis Point of Sale is a reliable, lightweight Linux desktop application designed to give business owners complete control over their operations, with no server and no IT expert required.
+
+  This all-in-one platform simplifies daily administration by allowing you to easily configure user accounts, classify products into clear categories, and maintain detailed vendor records in a single workspace.
+
+  From adding fresh stock and completing fast customer checkouts to processing returns and monitoring product movement, every tool is crafted to maintain smooth daily operations.
+
+  You can comfortably track total inventory value, manage item expiration dates, and use automated restock order lists to ensure essential products remain in stock.
+
+  By delivering clear sales reports alongside dependable business insights, Gratis POS enables you to make informed commercial decisions, improve profit margins, and elevate overall productivity.
+
+  Designed as the ideal choice for growing, medium, and large businesses that want a modern point-of-sale system with a premium look and feel, without the stress and expense of heavy licensing.
+
+  Pricing: free to download and free to try. After the trial, the subscription is TSh 3,000 per month.
+
+  Website: https://gratispos.space/
+
+license: Proprietary          # TODO: change to your SPDX id (e.g. MIT, GPL-3.0) if the GitHub source is open-licensed
+website: https://gratispos.space/
+contact: https://github.com/pharmyohanaa-max/gratispos/issues
+issues: https://github.com/pharmyohanaa-max/gratispos/issues
+source-code: https://github.com/pharmyohanaa-max/gratispos
+icon: snap/gui/gratis-pos.png   # TODO: provide a square PNG, 256x256 or larger
+
+grade: stable
+confinement: strict
+architectures:
+  - build-on: [amd64]
+
+apps:
+  gratis-pos:
+    command: bin/gratis-pos
+    plugs:
+      - home
+      - network
+      - network-bind
+      - removable-media
+      - desktop
+      - desktop-legacy
+      - x11
+      - wayland
+      - unity7
+      - opengl
+      - cups-control
+      # Needed for USB/serial thermal printers. May require manual store approval:
+      # - raw-usb
+      # - serial-port
+
+parts:
+  launcher:
+    plugin: dump
+    source: snap/local
+    stage-packages:
+      - openjdk-17-jre
+      - fontconfig
+      - fonts-dejavu-core
+      - libxtst6
+      - libxi6
+      - libxrender1
+      - libxext6
+      - libgtk-3-0
+
+  app-jar:
+    plugin: dump
+    source: https://github.com/pharmyohanaa-max/gratis-pos-snap/releases/download/v18.10.26/gratispos.jar
+    source-type: file
+    source-checksum: sha256/1d6675fda647bfec7b0501bde34011d5a4c7f84fc73b4ef3d05984e9ca587e5f
+    organize:
+      gratispos.jar: jar/gratispos.jar
