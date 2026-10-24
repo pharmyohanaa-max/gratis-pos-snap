@@ -44,9 +44,8 @@ apps:
       - desktop-legacy
       - x11
       - wayland
-      - unity7
       - opengl
-      - cups-control
+      - cups
       # Needed for USB/serial thermal printers. May require manual store approval:
       # - raw-usb
       # - serial-port
