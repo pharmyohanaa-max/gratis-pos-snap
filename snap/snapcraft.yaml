@@ -54,6 +54,9 @@ parts:
   launcher:
     plugin: dump
     source: snap/local
+    build-packages:
+      - ca-certificates-java
+      - openjdk-17-jre-headless
     stage-packages:
       - openjdk-17-jre
       - fontconfig
@@ -63,6 +66,11 @@ parts:
       - libxrender1
       - libxext6
       - libgtk-3-0
+    override-prime: |
+      craftctl default
+      CACERTS="$CRAFT_PRIME/usr/lib/jvm/java-17-openjdk-amd64/lib/security/cacerts"
+      rm -f "$CACERTS"
+      cp /etc/ssl/certs/java/cacerts "$CACERTS"
 
   app-jar:
     plugin: dump
