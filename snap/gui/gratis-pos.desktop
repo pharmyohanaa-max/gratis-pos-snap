@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Gratis POS
+GenericName=Point of Sale
+Comment=Free lightweight point of sale and shop management
+Exec=gratis-pos
+Icon=${SNAP}/meta/gui/gratis-pos.png
+Terminal=false
+Categories=Office;Finance;
+Keywords=POS;sales;inventory;stock;shop;

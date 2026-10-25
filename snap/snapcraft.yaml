@@ -1,7 +1,7 @@
 name: gratis-pos
 title: Gratis POS
 base: core22
-version: '18.10.26'
+version: '25.10.26'
 summary: Free to try, lightweight point of sale and shop management for Linux
 description: |
   Gratis Point of Sale is a reliable, lightweight Linux desktop application designed to give business owners complete control over their operations, with no server and no IT expert required.
@@ -74,8 +74,8 @@ parts:
 
   app-jar:
     plugin: dump
-    source: https://github.com/pharmyohanaa-max/gratis-pos-snap/releases/download/v18.10.26/gratispos.jar
+    source: https://github.com/pharmyohanaa-max/gratis-pos-snap/releases/download/v25.10.26/gratispos.jar
     source-type: file
-    source-checksum: sha256/1d6675fda647bfec7b0501bde34011d5a4c7f84fc73b4ef3d05984e9ca587e5f
+    source-checksum: sha256/4213ec72d265fb0ea85847467d7b2be77833203783f85adeacff95e1ea086cfa
     organize:
       gratispos.jar: jar/gratispos.jar
